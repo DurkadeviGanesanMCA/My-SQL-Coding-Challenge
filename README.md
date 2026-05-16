@@ -22,27 +22,17 @@ These SQL exercises were implemented using MySQL.
 
 ---
 
-# SQL Concepts Covered
+## SQL Concepts Covered
 
 ## 1. Database Operations
 
 ### Topics Practiced
 
-- `CREATE DATABASE`
-- `USE`
-- `DROP DATABASE`
-- `TRUNCATE TABLE`
-- `DROP TABLE`
-
-### Example
-
-```sql
-CREATE DATABASE BOOKSTORE;
-
-USE BOOKSTORE;
-
-DROP DATABASE BOOKSTORE;
-```
+- CREATE DATABASE
+- USE
+- DROP DATABASE
+- TRUNCATE TABLE
+- DROP TABLE
 
 ---
 
@@ -50,24 +40,12 @@ DROP DATABASE BOOKSTORE;
 
 ### Topics Practiced
 
-- `PRIMARY KEY`
-- `FOREIGN KEY`
-- `UNIQUE`
-- `CHECK`
-- `NOT NULL`
-- `AUTO_INCREMENT`
-
-### Example
-
-```sql
-CREATE TABLE Books (
-    BookID INTEGER PRIMARY KEY,
-    Title VARCHAR(100) NOT NULL,
-    Author VARCHAR(50) NOT NULL,
-    ISBN VARCHAR(20) UNIQUE,
-    Price DECIMAL(8,2) CHECK (Price > 0)
-);
-```
+- PRIMARY KEY
+- FOREIGN KEY
+- UNIQUE
+- CHECK
+- NOT NULL
+- AUTO_INCREMENT
 
 ---
 
@@ -80,23 +58,13 @@ CREATE TABLE Books (
 - Rename tables
 - Add constraints
 
-### Example
+---
 
-```sql
-ALTER TABLE Patients
-ADD COLUMN DoctorAssigned VARCHAR(50);
-
-ALTER TABLE Patients
-MODIFY PatientName VARCHAR(100);
-```
+## Projects Included
 
 ---
 
-# Projects Included
-
----
-
-# 1. Hospital Database Project
+## 1. Hospital Database Project
 
 ## Concepts Covered
 
@@ -107,21 +75,15 @@ MODIFY PatientName VARCHAR(100);
 - DROP table
 - DROP database
 
-## Sample Query
+### Key Learnings
 
-```sql
-CREATE TABLE Patients (
-    PatientID INT,
-    PatientName VARCHAR(50),
-    Age INT,
-    Gender VARCHAR(10),
-    AdmissionDate DATE
-);
-```
+- Understanding database structure management
+- Learning schema modification operations
+- Managing table-level operations
 
 ---
 
-# 2. BOOKSTORE Database Project
+## 2. BOOKSTORE Database Project
 
 ## Concepts Covered
 
@@ -131,23 +93,16 @@ CREATE TABLE Patients (
 - DELETE vs TRUNCATE
 - Data retrieval
 
-## Sample Query
+### Key Learnings
 
-```sql
-INSERT INTO Books (BookID, Title, Author, ISBN, Price)
-VALUES
-(1, 'SQL Basics', 'John Smith', 'ISBN001', 25.99);
-```
-
-## Key Learnings
-
-- How relational tables work
+- Understanding relational tables
 - Difference between DELETE and TRUNCATE
-- How constraints maintain data integrity
+- Maintaining data integrity using constraints
+- Performing CRUD operations
 
 ---
 
-# 3. ECommerceDB Project
+## 3. ECommerceDB Project
 
 ## Concepts Covered
 
@@ -160,60 +115,38 @@ VALUES
 - IN and NOT IN
 - Arithmetic operations
 
-## Sample Query
+### Key Learnings
 
-```sql
-SELECT product_name,
-       price,
-       price * 1.10 AS IncreasePrice
-FROM Product;
-```
-
-## Filtering Operations Practiced
-
-```sql
-SELECT *
-FROM Product
-WHERE price > 5000
-AND price < 50000;
-```
+- Filtering and sorting data
+- Writing conditional queries
+- Using pattern matching
+- Performing arithmetic calculations in SQL
 
 ---
 
-# 4. Aggregate and Ranking Queries
+## 4. Aggregate and Ranking Queries
 
 ## Concepts Covered
 
-- `COUNT()`
-- `SUM()`
-- `AVG()`
-- `MAX()`
-- `MIN()`
-- `GROUP BY`
-- `HAVING`
-- `RANK()`
+- COUNT()
+- SUM()
+- AVG()
+- MAX()
+- MIN()
+- GROUP BY
+- HAVING
+- RANK()
 
-## Sample Query
+### Key Learnings
 
-```sql
-SELECT
-    product_id,
-    product_name,
-    price,
-    RANK() OVER (ORDER BY price DESC) AS Price_Rank
-FROM Product;
-```
-
-## Key Learnings
-
-- Business reporting queries
-- Ranking products
-- Aggregate calculations
 - Data summarization
+- Business reporting queries
+- Product ranking analysis
+- Aggregate calculations
 
 ---
 
-# 5. Sales Analytics Project
+## 5. Sales Analytics Project
 
 ## Concepts Covered
 
@@ -232,23 +165,7 @@ FROM Product;
 - Salespersons
 - Orders
 
-## Sample JOIN Query
-
-```sql
-SELECT
-    O.OrderID,
-    C.CustomerName,
-    P.ProductName,
-    O.Quantity,
-    O.OrderDate
-FROM Orders O
-JOIN Customers C
-ON O.CustomerID = C.CustomerID
-JOIN Products P
-ON O.ProductID = P.ProductID;
-```
-
-## Key Learnings
+### Key Learnings
 
 - Working with relational databases
 - Connecting multiple tables
@@ -257,7 +174,7 @@ ON O.ProductID = P.ProductID;
 
 ---
 
-# 6. StudentsDB Project
+## 6. StudentsDB Project
 
 ## Concepts Covered
 
@@ -272,38 +189,35 @@ ON O.ProductID = P.ProductID;
 
 ### String Functions
 
-- `CONCAT()`
-- `LENGTH()`
-- `REPLACE()`
-- `SUBSTRING()`
-- `UPPER()`
-- `LOWER()`
+- CONCAT()
+- LENGTH()
+- REPLACE()
+- SUBSTRING()
+- UPPER()
+- LOWER()
 
 ### Numeric Functions
 
-- `ROUND()`
-- `ABS()`
-- `MOD()`
+- ROUND()
+- ABS()
+- MOD()
 
 ### Date Functions
 
-- `NOW()`
-- `DATEDIFF()`
-- `DATE_ADD()`
+- NOW()
+- DATEDIFF()
+- DATE_ADD()
 
-## Sample Query
+### Key Learnings
 
-```sql
-SELECT
-    StudentName,
-    UPPER(StudentName) AS Upper_Name,
-    LOWER(StudentName) AS Lower_Name
-FROM Students;
-```
+- Data formatting and manipulation
+- String and numeric transformations
+- Working with date functions
+- Managing student-course relationships
 
 ---
 
-# 7. Employee Database Subquery Project
+## 7. Employee Database Subquery Project
 
 ## Concepts Covered
 
@@ -313,36 +227,7 @@ FROM Students;
 - EXISTS
 - ANY and ALL operators
 
-## Subquery Types Practiced
-
-### Single Row Subquery
-
-```sql
-SELECT Salary
-FROM employees
-WHERE Salary >
-(
-    SELECT AVG(Salary)
-    FROM employees
-);
-```
-
-### Correlated Subquery
-
-```sql
-SELECT
-    e1.employee_name,
-    e1.salary
-FROM employees e1
-WHERE e1.salary >
-(
-    SELECT AVG(e2.salary)
-    FROM employees e2
-    WHERE e1.department_id = e2.department_id
-);
-```
-
-## Key Learnings
+### Key Learnings
 
 - Advanced SQL querying
 - Department-level analytics
@@ -370,13 +255,28 @@ WHERE e1.salary >
 
 ---
 
-# Tools Used
+## Tools Used
 
 - MySQL
 - MySQL Workbench
-- GitHub
+---
+
+## Learning Outcomes
+
+Through these projects, I gained practical experience in:
+
+- Designing relational databases
+- Writing SQL queries
+- Using joins for data analysis
+- Applying aggregate functions
+- Working with real-world business scenarios
+- Building analytical SQL reports
+- Understanding advanced SQL concepts
+
+---
+
 ## Conclusion
-This repository represents my SQL learning journey and practical hands-on experience with database
-querying and analytics.
-The projects demonstrate foundational to intermediate SQL concepts used in real-world data analytics and
-business reporting scenarios
+
+This repository represents my SQL learning journey and practical hands-on experience with database querying and analytics.
+
+The projects demonstrate foundational to intermediate SQL concepts used in real-world data analytics and business reporting scenarios.
